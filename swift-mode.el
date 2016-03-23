@@ -268,7 +268,7 @@ let x = someFunction(
         ;; supresses implicit semicolon after keyword
         ;; Note that "as?" is already handled by preceeding conditions.
         (save-excursion
-          (member (smie-default-backward-token) '("as" "is" "try" "class" "deinit" "enum" "extension" "func" "import" "init" "internal" "let" "operator" "private" "protocol" "public" "static" "struct" "subscript" "typealias" "var" "case" "for" "if" "return" "throw" "switch" "where" "while" "associativity" "convenience" "dynamic" "didSet" "final" "get" "infix" "inout" "lazy" "mutating" "nonmutating" "optional" "override" "postfix" "precedence" "prefix" "required" "set" "unowned" "weak" "willSet" "throws" "rethrows" "catch" "indirect" "guard")))
+          (member (smie-default-backward-token) '("as" "is" "try" "class" "deinit" "enum" "extension" "func" "import" "init" "internal" "let" "operator" "private" "protocol" "public" "static" "struct" "subscript" "typealias" "associatedtype" "var" "case" "for" "if" "return" "throw" "switch" "where" "while" "associativity" "convenience" "dynamic" "didSet" "final" "get" "infix" "inout" "lazy" "mutating" "nonmutating" "optional" "override" "postfix" "precedence" "prefix" "required" "set" "unowned" "weak" "willSet" "throws" "rethrows" "catch" "indirect" "guard")))
         ;; supresses implicit semicolon before operator
         (progn
           (forward-comment (point-max))
@@ -304,7 +304,7 @@ let x = someFunction(
         ;; }
         (progn
           (smie-default-backward-token)
-          (member (smie-default-backward-token) '("class" "extension" "enum" "struct" "protocol" "typealias" "let" "var"))))))
+          (member (smie-default-backward-token) '("class" "extension" "enum" "struct" "protocol" "typealias" "associatedtype" "let" "var"))))))
 
 (defun swift-smie--forward-token-debug ()
   (let ((token (swift-smie--forward-token)))
@@ -990,7 +990,7 @@ and returns nil"
 ;;; Font lock
 
 (defvar swift-mode--type-decl-keywords
-  '("class" "enum" "protocol" "struct" "typealias"))
+  '("class" "enum" "protocol" "struct" "typealias" "associatedtype"))
 
 (defvar swift-mode--val-decl-keywords
   '("let" "var"))
